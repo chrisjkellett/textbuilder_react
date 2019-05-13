@@ -2,8 +2,8 @@ class Builder {
   build(text, gaps){
     const words = text.split(" ");
     this.validate(words.length, gaps);
-    const indexArray = this.getIndexArray(words.length, gaps);
-    return this.processString(indexArray, words);
+    const indexArray = this.indexArray(words.length, gaps);
+    return this.process(indexArray, words);
   }
 
   validate(textLength, gaps){
@@ -12,15 +12,15 @@ class Builder {
     }
   }
 
-  processString(indexArray, words){
+  process(indexArray, words){
     return words.map((word, index) => indexArray.includes(index) ? '{gap}' : word);
   }
   
-  getIndexArray(textLength, times){
+  indexArray(textLength, times){
     let array = [];
     let res;
     for (let i = 0; array.length < times; i++){
-      res = this.getRandomIndex(textLength);
+      res = this.randomIndex(textLength);
       if(!array.includes(res)){
         array.push(res) 
       } 
@@ -28,7 +28,7 @@ class Builder {
     return array;
   }
   
-  getRandomIndex(textLength){
+  randomIndex(textLength){
     return Math.floor(Math.random() * textLength)
   }
 
