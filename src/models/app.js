@@ -5,37 +5,31 @@ class Builder {
     this.hard = 0.6
   }
 
-  calculateGaps(textLength, level){
-    return Math.round(textLength * this[level]);
-  }
-
-  build(text, gaps){
+  build(text, level){
     const words = text.split(" ");
-    this.validate(words.length, gaps);
+    const gaps = this.calculateGaps(words.length, level);
     const indexArray = this.indexArray(words.length, gaps);
     return this.process(indexArray, words);
   }
 
-  validate(textLength, gaps){
-    if(gaps > textLength){
-      throw new Error();
-    }
+  calculateGaps(textLength, level = 'easy'){
+    return Math.ceil(textLength * this[level]);
   }
 
-  process(indexArray, words){
-    return words.map((word, index) => indexArray.includes(index) ? '{gap}' : word);
-  }
-  
-  indexArray(textLength, times){
+  indexArray(textLength, gaps){
     let array = [];
     let res;
-    for (let i = 0; array.length < times; i++){
+    for (let i = 0; array.length < gaps; i++){
       res = this.randomIndex(textLength);
       if(!array.includes(res)){
         array.push(res) 
       } 
     }
     return array;
+  }
+
+  process(indexArray, words){
+    return words.map((word, index) => indexArray.includes(index) ? '{gap}' : word);
   }
   
   randomIndex(textLength){
