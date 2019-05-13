@@ -1,0 +1,1 @@
+# client side basic version for text builder app
