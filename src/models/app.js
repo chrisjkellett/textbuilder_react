@@ -1,4 +1,14 @@
 class Builder {
+  constructor(){
+    this.easy = 0.2,
+    this.intermediate = 0.4,
+    this.hard = 0.6
+  }
+
+  calculateGaps(textLength, level){
+    return Math.round(textLength * this[level]);
+  }
+
   build(text, gaps){
     const words = text.split(" ");
     this.validate(words.length, gaps);

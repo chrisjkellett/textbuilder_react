@@ -3,6 +3,12 @@ import app from './app';
 const textLength = 4;
 const gaps = 2;
 
+test('calculateGaps() returns n gaps depending on level', () => {
+  expect(app.calculateGaps(10, 'easy')).toBe(app.easy * 10);
+  expect(app.calculateGaps(10, 'intermediate')).toBe(app.intermediate * 10);
+  expect(app.calculateGaps(10, 'hard')).toBe(app.hard * 10);
+})
+
 test('randomIndex() returns a number lower than textLength', () => {
   const result = app.randomIndex(textLength);
   expect(result).toBeLessThan(textLength);
