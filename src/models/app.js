@@ -1,7 +1,7 @@
 class Builder {
   constructor(){
-    this.easy = 0.2,
-    this.intermediate = 0.4,
+    this.easy = 0.2
+    this.intermediate = 0.4
     this.hard = 0.6
   }
 
