@@ -17,6 +17,21 @@ class Builder {
     return Math.ceil(textLength * this[level]);
   }
 
+  check(userAnswers, text){
+    const keys = Object.keys(userAnswers);
+    let corrections = [];
+    text.forEach((word, index) => {
+      if(keys.includes(index.toString()))
+        if(userAnswers[index] === word)
+          corrections.push('#' + word);
+        else
+          corrections.push('!' + word)
+      else
+        corrections.push(word);
+    });
+    return corrections;
+  }
+
   indexArray(textLength, gaps){
     let array = [];
     let res;
