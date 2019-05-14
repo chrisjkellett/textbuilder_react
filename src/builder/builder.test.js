@@ -28,7 +28,6 @@ describe('check() returns an array with corrected text', () => {
   
 })
 
-
 test('randomIndex() returns a number lower than textLength', () => {
   const result = app.randomIndex(textLength);
   expect(result).toBeLessThan(textLength);
