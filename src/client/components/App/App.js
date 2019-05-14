@@ -1,22 +1,31 @@
 import React, {Component} from 'react';
+import Error from '../Error/Error';
 import './App.css';
 import app from '../../../builder/builder';
 
 class App extends Component{
   state = {
-    text: ''
+    text: '',
+    showError: false
   }
 
   change = (e) => {
     this.setState({
-      text: e.target.value
+      text: e.target.value,
+      showError: false
     })
   }
 
   submit = (e) => {
     e.preventDefault();
-    const result = app.build(this.state.text, 7);
-    console.log(result);
+    const {text} = this.state;
+    if(text.length > 5){
+      const result = app.build(this.state.text, 'intermediate');
+      console.log(result);
+    }
+    else{
+      this.setState({showError: true})
+    }
   }
 
   render() {
@@ -30,6 +39,7 @@ class App extends Component{
           <option id="1">intermediate</option>
           <option id="2">hard</option>
         </select>
+        <Error showError={this.state.showError} minLength={app.minimumWords} />
       </form> 
       </div>
     );

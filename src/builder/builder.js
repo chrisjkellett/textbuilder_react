@@ -3,6 +3,7 @@ class Builder {
     this.easy = 0.2
     this.intermediate = 0.4
     this.hard = 0.6
+    this.minimumWords = 5
   }
 
   build(text, level){
