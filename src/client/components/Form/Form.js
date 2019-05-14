@@ -2,7 +2,7 @@ import React from 'react';
 import Error from '../Error/Error';
 
 export default function Form(props) {
-  return !props.showForm ? null : (
+  return (
     <form onSubmit={props.submit}>
       <textarea id="text" onChange={props.change}/>
       <button>submit</button>

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import Form from '../Form/Form';
+import Exercise from '../Exercise/Exercise';
 import './App.css';
 import app from '../../../builder/builder';
-
-
 
 export default class App extends Component{
   state = {
@@ -33,14 +32,15 @@ export default class App extends Component{
   }
 
   render() {
+    const {showError, showForm} = this.state;
     return (
-      <Form 
-        submit={this.submit} 
-        change={this.change} 
-        showForm={this.state.showForm}
-        showError={this.state.showError} 
-        minimumWords={app.minimumWords}
-      />
+      <div>
+        {showForm 
+          ? <Form submit={this.submit} change={this.change} showError={showError} minimumWords={app.minimumWords} />
+          : <Exercise />
+        }
+      </div>
+      
     );
   }
 };
