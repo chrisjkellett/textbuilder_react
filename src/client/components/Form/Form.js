@@ -1,6 +1,5 @@
 import React from 'react';
 import Error from './Error/Error';
-import './Form.css';
 
 export default function Form(props) {
   return (

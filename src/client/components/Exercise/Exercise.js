@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import './Exercise.css';
 
 export default class Exercise extends Component {
   componentWillMount(){

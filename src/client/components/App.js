@@ -13,7 +13,8 @@ export default class App extends Component {
     showForm: true,
     showSummary: false,
     showExercise: false,
-    level: 'easy'
+    level: 'easy',
+    userAnswers: null
   }
 
   change = (e) => {
@@ -23,7 +24,7 @@ export default class App extends Component {
   check = (userAnswers) => {
     const text = this.state.text.split(" ");
     const corrections = app.check(userAnswers, text);
-    this.setState({showExercise: false, showSummary: true, corrections: corrections});
+    this.setState({showExercise: false, showSummary: true, corrections: corrections, userAnswers: userAnswers});
   }
 
   submit = () => {
@@ -35,7 +36,8 @@ export default class App extends Component {
   };
 
   render() {
-    const {showError, showForm, exercise, showExercise, showSummary, corrections} = this.state;
+    const {showError, showForm, exercise, showExercise, showSummary, corrections, userAnswers} = this.state;
+    const text = this.state.text.split(" ");
     return (
       <div>
         {showForm &&
@@ -43,7 +45,7 @@ export default class App extends Component {
         {showExercise &&
           <Exercise exercise={exercise} check={this.check} />}
         {showSummary && corrections &&
-          <Summary corrections={corrections}/>}
+          <Summary corrections={corrections} text={text} userAnswers={userAnswers}/>}
       </div>
     );
   };
