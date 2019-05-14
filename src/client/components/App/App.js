@@ -4,7 +4,7 @@ import Exercise from '../Exercise/Exercise';
 import './App.css';
 import app from '../../../builder/builder';
 
-export default class App extends Component{
+export default class App extends Component {
   state = {
     text: '',
     showError: false,
@@ -13,23 +13,17 @@ export default class App extends Component{
   }
 
   change = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value,
-      showError: false
-    })
-  }
+    this.setState({[e.target.id]: e.target.value, showError: false});
+  };
 
   submit = (e) => {
     e.preventDefault();
     const {text, level} = this.state;
-    if(text.length > app.minimumWords){
-      const result = app.build(text, level);
-      console.log(result);
-    }
-    else{
-      this.setState({showError: true})
-    }
-  }
+    if(text.length > app.minimumWords)
+      this.setState({result: app.build(text, level)});
+    else
+      this.setState({showError: true});
+  };
 
   render() {
     const {showError, showForm} = this.state;
@@ -40,7 +34,6 @@ export default class App extends Component{
           : <Exercise />
         }
       </div>
-      
     );
-  }
+  };
 };
