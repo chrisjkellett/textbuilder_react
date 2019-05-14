@@ -17,8 +17,8 @@ export default class App extends Component {
     this.setState({[e.target.id]: e.target.value, showError: false});
   };
 
-  check = () => {
-    console.log('check')
+  check = (userAnswers) => {
+    console.log(userAnswers)
   }
 
   submit = () => {
