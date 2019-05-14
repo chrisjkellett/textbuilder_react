@@ -10,23 +10,25 @@ test('calculateGaps() returns n gaps depending on level', () => {
   expect(app.calculateGaps(10, 'hard')).toBe(app.hard * 10);
 })
 
-describe('check() returns an array with corrected text', () => {
-  test('returns word when not a key of userAnswers', () => {
-    const result = app.check({}, ['theAnswer']);
-    expect(result).toEqual(['theAnswer']);
-  });
+test('check() returns word when not a key of userAnswers', () => {
+  const result = app.check({}, ['theAnswer']);
+  expect(result).toEqual(['theAnswer']);
+});
 
-  test('returns word prefixed with # when in userAnswers and matches text[i]', () => {
-    const result = app.check({0: 'theAnswer'}, ['theAnswer']);
-    expect(result).toEqual(['#theAnswer']);
-  });
+test('check() returns word prefixed with # when in userAnswers and matches text[i]', () => {
+  const result = app.check({0: 'theAnswer'}, ['theAnswer']);
+  expect(result).toEqual(['#theAnswer']);
+});
 
-  test('returns word prefixed with ! when in userAnswers and does NOT match text[i]', () => {
-    const result = app.check({0: 'theAnswers'}, ['theAnswer']);
-    expect(result).toEqual(['!theAnswer']);
-  });
-  
-})
+test('check() returns word prefixed with ! when in userAnswers and does NOT match text[i]', () => {
+  const result = app.check({0: 'theAnswers'}, ['theAnswer']);
+  expect(result).toEqual(['!theAnswer']);
+});
+
+test('check() returns [not answered] when in userAnswers and is empty string', () => {
+  const result = app.check({0: ''}, ['theAnswer']);
+  expect(result).toEqual(['[not answered]']);
+});
 
 test('randomIndex() returns a number lower than textLength', () => {
   const result = app.randomIndex(textLength);

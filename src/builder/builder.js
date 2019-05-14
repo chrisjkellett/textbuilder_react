@@ -22,7 +22,9 @@ class Builder {
     let corrections = [];
     text.forEach((word, index) => {
       if(keys.includes(index.toString()))
-        if(userAnswers[index] === word)
+        if(userAnswers[index] === '')
+          corrections.push('[not answered]');
+        else if(userAnswers[index] === word)
           corrections.push('#' + word);
         else
           corrections.push('!' + word)

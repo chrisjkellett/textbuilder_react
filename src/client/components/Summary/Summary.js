@@ -1,21 +1,18 @@
-import React from 'react'
+import React from 'react';
+import {passed, failed, notAnswered, normalWord} from './utils';
 
 export default function Summary(props) {
   return (
     <div>
-      {props.corrections.map((word, index) => {
-        if(word[0] === '#')
-          return <span className='passed' key={index}>{props.text[index]}</span>
-        else if(word[0] === '!'){
-          return (
-            <span>
-              <span className='failed' key={index}>{props.userAnswers[index]}</span>
-              <span>({props.text[index]})</span>
-            </span>
-          )
-        }else
-          return <span key={index}>{word}</span>
+      {props.corrections.map((word, index) => {  
+        switch(word[0]){
+          case '#': return passed(index, props)
+          case '!': return failed(index, props);
+          case '[': return notAnswered(index, props);
+          default: return normalWord(index, word);
+        }
       })}
     </div>
   )
-}
+};
+
