@@ -14,3 +14,11 @@ input {
   font-size: inherit;
   margin: 0 2px;
 }
+
+.passed {
+  background: palegreen;
+}
+
+.failed {
+  text-decoration: line-through;
+}
