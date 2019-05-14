@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import Error from '../Error/Error';
+import Form from '../Form/Form';
 import './App.css';
 import app from '../../../builder/builder';
 
-class App extends Component{
+
+
+export default class App extends Component{
   state = {
     text: '',
     showError: false,
+    showForm: true,
     level: 'easy'
   }
 
@@ -31,20 +34,13 @@ class App extends Component{
 
   render() {
     return (
-      <div className="App">
-      <form onSubmit={this.submit}>
-        <textarea id="text" onChange={this.change}/>
-        <button>submit</button>
-        <select id="level" onChange={this.change}>
-          <option id="0">easy</option>
-          <option id="1">intermediate</option>
-          <option id="2">hard</option>
-        </select>
-        <Error showError={this.state.showError} minLength={app.minimumWords} />
-      </form> 
-      </div>
+      <Form 
+        submit={this.submit} 
+        change={this.change} 
+        showForm={this.state.showForm}
+        showError={this.state.showError} 
+        minimumWords={app.minimumWords}
+      />
     );
   }
-}
-
-export default App;
+};
