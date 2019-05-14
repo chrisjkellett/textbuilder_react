@@ -7,6 +7,7 @@ import app from '../../../builder/builder';
 export default class App extends Component {
   state = {
     text: '',
+    exercise: null,
     showError: false,
     showForm: true,
     level: 'easy'
@@ -16,22 +17,25 @@ export default class App extends Component {
     this.setState({[e.target.id]: e.target.value, showError: false});
   };
 
-  submit = (e) => {
-    e.preventDefault();
+  check = () => {
+    console.log('check')
+  }
+
+  submit = () => {
     const {text, level} = this.state;
     if(text.length > app.minimumWords)
-      this.setState({result: app.build(text, level)});
+      this.setState({exercise: app.build(text, level), showForm: false});
     else
       this.setState({showError: true});
   };
 
   render() {
-    const {showError, showForm} = this.state;
+    const {showError, showForm, exercise} = this.state;
     return (
       <div>
         {showForm 
           ? <Form submit={this.submit} change={this.change} showError={showError} minimumWords={app.minimumWords} />
-          : <Exercise />
+          : <Exercise exercise={exercise} check={this.check} />
         }
       </div>
     );
