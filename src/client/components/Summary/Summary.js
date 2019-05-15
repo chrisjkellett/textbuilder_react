@@ -1,5 +1,5 @@
 import React from 'react';
-import {passed, failed, notAnswered, normalWord} from './utils';
+import {passed, failed, normalWord} from './utils';
 
 export default function Summary(props) {
   return (
@@ -8,7 +8,7 @@ export default function Summary(props) {
         switch(word[0]){
           case '#': return passed(index, props)
           case '!': return failed(index, props);
-          case '[': return notAnswered(index, props);
+          case '[': return failed(index, props);
           default: return normalWord(index, word);
         }
       })}

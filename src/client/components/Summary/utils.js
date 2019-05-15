@@ -7,8 +7,7 @@ export function passed(index, props){
 export function failed(index, props){
   return (
     <span key={index}>
-      <span className='failed'>{props.userAnswers[index]}</span>
-      <span>({props.text[index]})</span>
+      <span className='failed'>{props.text[index]}</span>
     </span>
   )
 };

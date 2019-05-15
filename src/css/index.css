@@ -20,5 +20,5 @@ input {
 }
 
 .failed {
-  text-decoration: line-through;
+  background: lightcoral;
 }
