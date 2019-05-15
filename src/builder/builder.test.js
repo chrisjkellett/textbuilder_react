@@ -53,3 +53,8 @@ test('build() returns a new text n gaps depending on level', () => {
   const resultWhenEasy = app.build(text, 'easy');
   expect(resultWhenEasy.filter(word => word === '{gap}').length).toEqual(2);
 });
+
+test('score() works out score for an exercise', () => {
+  const corrections = ['aWord', '#aCorrectAnswer', '!aWrongAnswer', '[not answered]'];
+  expect(app.score(corrections)).toEqual({correct: 1, total: 3});
+});

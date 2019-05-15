@@ -54,6 +54,22 @@ class Builder {
     return Math.floor(Math.random() * textLength)
   }
 
+  score(corrections){
+    let score = {
+      correct: 0,
+      total: 0
+    }
+    corrections.forEach(word => {
+      if(word[0] === '#'){
+        score.correct ++;
+        score.total ++;
+      }
+      else if(word[0] === '!' || word[0] === '[')
+        score.total ++;
+    })
+    return score;
+  }
+
 }
 
 export default new Builder();
