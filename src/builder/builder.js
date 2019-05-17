@@ -71,5 +71,4 @@ class Builder {
   }
 
 }
-
 export default new Builder();
