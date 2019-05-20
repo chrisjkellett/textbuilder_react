@@ -27,6 +27,7 @@ export default class Summary extends Component {
           })}
         </div>
         <div>score: {this.props.score.correct}/{this.props.score.total}</div>
+        <div>user answer: {this.props.userAnswers["0"]}</div>
       </div>
     )
   }
