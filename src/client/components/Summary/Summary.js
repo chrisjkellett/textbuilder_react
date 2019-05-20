@@ -16,14 +16,17 @@ export default class Summary extends Component {
   render() {
     return (
       <div>
-        {this.props.corrections.map((word, index) => {  
-          switch(word[0]){
-            case '#': return this.passed(index)
-            case '!': return this.failed(index);
-            case '[': return this.failed(index);
-            default: return this.normalWord(index);
-          }
-        })}
+        <div>
+          {this.props.corrections.map((word, index) => {  
+            switch(word[0]){
+              case '#': return this.passed(index)
+              case '!': return this.failed(index);
+              case '[': return this.failed(index);
+              default: return this.normalWord(index);
+            }
+          })}
+        </div>
+        <div>score: {this.props.score.correct}/{this.props.score.total}</div>
       </div>
     )
   }

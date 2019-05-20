@@ -52,7 +52,11 @@ export default class App extends Component {
         {showExercise &&
           <Exercise exercise={exercise} check={this.check} />}
         {showSummary && corrections &&
-          <Summary corrections={corrections} text={text} userAnswers={userAnswers}/>}
+          <Summary 
+          corrections={corrections} 
+          text={text} 
+          userAnswers={userAnswers}
+          score={this.state.score}/>}
       </div>
     );
   };
