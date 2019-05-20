@@ -36,7 +36,7 @@ export default class App extends Component {
 
   submit = () => {
     const {text, level} = this.state;
-    if(text.length > app.minimumWords)
+    if(text.split(" ").length >= app.minimumWords)
       this.setState({exercise: app.build(text, level), showForm: false, showExercise: true});
     else
       this.setState({showError: true});
