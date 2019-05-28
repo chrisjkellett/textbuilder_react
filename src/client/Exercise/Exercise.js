@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import validate from '../../utilities/validate/validate';
+import validate from '../../tools/validate/validate';
 import Words from './Words/Words';
 
 export default class Exercise extends Component {

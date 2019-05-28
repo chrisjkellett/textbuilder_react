@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Form from './Form/Form';
 import Exercise from './Exercise/Exercise';
 import Summary from './Summary/Summary';
-import app from '../../builder/builder';
+import app from '../tools/builder/builder';
 
 export default class App extends Component {
   state = {
