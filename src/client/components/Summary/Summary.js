@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { all } from 'q';
 
 export default class Summary extends Component {
   passed(index){
@@ -15,7 +14,6 @@ export default class Summary extends Component {
   }
 
   render() {
-    const answerList=Object.values(this.props.userAnswers)
     return (
       <div>
         <div>
@@ -29,8 +27,6 @@ export default class Summary extends Component {
           })}
         </div>
         <div>score: {this.props.score.correct}/{this.props.score.total}</div>
-        
-        <div>user answer: {answerList.join(", ")}</div>
       </div>
     )
   }

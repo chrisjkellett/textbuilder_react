@@ -43,7 +43,7 @@ export default class App extends Component {
   };
 
   render() {
-    const {showError, showForm, exercise, showExercise, showSummary, corrections, userAnswers} = this.state;
+    const {showError, score, showForm, exercise, showExercise, showSummary, corrections, userAnswers} = this.state;
     const text = this.state.text.split(" ");
     return (
       <div>
@@ -56,7 +56,7 @@ export default class App extends Component {
           corrections={corrections} 
           text={text} 
           userAnswers={userAnswers}
-          score={this.state.score}/>}
+          score={score}/>}
       </div>
     );
   };
