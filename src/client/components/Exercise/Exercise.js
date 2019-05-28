@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import validate from '../../utilities/validate/validate';
+import Words from './Words/Words';
 
 export default class Exercise extends Component {
   state = {
@@ -31,12 +32,10 @@ export default class Exercise extends Component {
     return (
       <div>
         <div>
-          {this.props.exercise.map((word, i) => {
-            if(word !== '{gap}')
-              return <span key={i} id={i}>{word}</span>
-            else
-              return <input onChange={this.change} value={this.state.userAnswers[i]} key={i} id={i} />
-          })}
+          <Words 
+            exercise={this.props.exercise}
+            change={this.change}
+            userAnswers={this.state.userAnswers} />
         </div>
         <button onClick={() => this.props.check(this.state.userAnswers)}>check</button>
       </div>
