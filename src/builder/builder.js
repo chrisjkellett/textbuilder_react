@@ -3,7 +3,7 @@ class Builder {
     this.easy = 0.2
     this.intermediate = 0.4
     this.hard = 0.6
-    this.minimumWords = 5
+    this.minimumWords = 2
   }
 
   build(text, level){
@@ -24,7 +24,7 @@ class Builder {
       if(keys.includes(index.toString()))
         if(userAnswers[index] === '')
           corrections.push('[not answered]');
-        else if(userAnswers[index] === word)
+        else if(userAnswers[index].toLowerCase() === word.toLowerCase())
           corrections.push('#' + word);
         else
           corrections.push('!' + word)

@@ -20,6 +20,11 @@ test('check() returns word prefixed with # when in userAnswers and matches text[
   expect(result).toEqual(['#theAnswer']);
 });
 
+test('check() returns as correct regardless of case', () => {
+  const result = app.check({0: 'theANSWER'}, ['theAnswer']);
+  expect(result).toEqual(['#theAnswer']);
+})
+
 test('check() returns word prefixed with ! when in userAnswers and does NOT match text[i]', () => {
   const result = app.check({0: 'theAnswers'}, ['theAnswer']);
   expect(result).toEqual(['!theAnswer']);
