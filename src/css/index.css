@@ -23,7 +23,7 @@ input {
   background: lightcoral;
 }
 
-.Word {
+.word {
   display: inline-block;
-  margin: 0.5% 0.2%;
+  margin: 5px 1.5px;
 }

@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 
 export default class Summary extends Component {
   passed(index){
-    return <span className='passed' key={index}>{this.props.text[index]}</span>
+    return <div className='passed word' key={index}>{this.props.text[index]}</div>
   }
 
   failed(index){
-    return <span key={index} className='failed'>{this.props.text[index]}</span>
+    return <div key={index} className='failed word'>{this.props.text[index]}</div>
   }
 
   normalWord(index){
-    return <span key={index}>{this.props.text[index]}</span>
+    return <div key={index} className='word'>{this.props.text[index]}</div>
   }
 
   render() {
