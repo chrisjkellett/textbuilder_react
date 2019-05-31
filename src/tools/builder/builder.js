@@ -7,7 +7,7 @@ class Builder {
   }
 
   build(text, level){
-    const words = text.split(" ");
+    const words = this.prepare(text);
     const gaps = this.calculateGaps(words.length, level);
     const indexArray = this.indexArray(words.length, gaps);
     return this.process(indexArray, words);
@@ -44,6 +44,17 @@ class Builder {
       } 
     }
     return array;
+  }
+
+  markParagraphs(text){
+    const p = new RegExp(/\n/g);
+    return text.replace(p, ' {p} ');
+  }
+
+  prepare(text){
+    const textMarkedForParagraphs = this.markParagraphs(text);
+    const hasSpaces = new RegExp(/\s+/);
+    return textMarkedForParagraphs.split(hasSpaces);
   }
 
   process(indexArray, words){

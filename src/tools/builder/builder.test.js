@@ -63,3 +63,15 @@ test('score() works out score for an exercise', () => {
   const corrections = ['aWord', '#aCorrectAnswer', '!aWrongAnswer', '[not answered]'];
   expect(app.score(corrections)).toEqual({correct: 1, total: 3});
 });
+
+test('prepare() splits text by word removing spaces', () => {
+  const text = 'i    am a difficult text';
+  const result = app.prepare(text);
+  expect(result).toEqual(['i', 'am', 'a', 'difficult', 'text'])
+})
+
+test('markParagraphs() replaces any carriage returns with a {p} marker for rendering', () => {
+  const text = 'hello \n i am multiple \n paragraphs';
+  const result = app.markParagraphs(text);
+  expect(result).toEqual('hello  {p}  i am multiple  {p}  paragraphs')
+})
