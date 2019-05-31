@@ -9,7 +9,7 @@ class Builder {
   build(text, level){
     const words = this.prepare(text);
     const gaps = this.calculateGaps(words.length, level);
-    const indexArray = this.indexArray(words.length, gaps);
+    const indexArray = this.indexArray(words, gaps);
     return this.process(indexArray, words);
   }
 
@@ -34,12 +34,12 @@ class Builder {
     return corrections;
   }
 
-  indexArray(textLength, gaps){
+  indexArray(words, gaps){
     let array = [];
     let res;
     for (let i = 0; array.length < gaps; i++){
-      res = this.randomIndex(textLength);
-      if(!array.includes(res)){
+      res = this.randomIndex(words.length);
+      if(!array.includes(res) && words[res] !== '{p}'){
         array.push(res) 
       } 
     }

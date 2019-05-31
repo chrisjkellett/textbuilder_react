@@ -1,6 +1,5 @@
 import app from './builder';
 
-const textLength = 4;
 const gaps = 2;
 
 test('calculateGaps() returns n gaps depending on level', () => {
@@ -36,14 +35,22 @@ test('check() returns [not answered] when in userAnswers and is empty string', (
 });
 
 test('randomIndex() returns a number lower than textLength', () => {
+  const textLength = 4;
   const result = app.randomIndex(textLength);
   expect(result).toBeLessThan(textLength);
 }); 
 
-test('indexArray() returns an array of indexes which are less than word length with no duplicates', () => {
-  const result = app.indexArray(textLength, gaps);
+test('indexArray() returns an array of is which are less than word length with no duplicates', () => {
+  const words = ['i', 'am', 'a', 'text'];
+  const result = app.indexArray(words, gaps);
   expect(result.length).toEqual(2);
   expect(result.filter(i => i > 5).length).toEqual(0);
+});
+
+test.only('indexArray() does not return the index of {p} placeholders', () => {
+  const words = ['i', 'am', 'a', '{p}', 'text'];
+  const result = app.indexArray(words, gaps);
+  expect(result.filter(i => words[i] === '{p}')).toHaveLength(0);
 });
 
 test('process() returns a new text with n gaps', () => {

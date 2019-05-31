@@ -22,6 +22,7 @@ export default class Summary extends Component {
               case '#': return this.passed(index)
               case '!': return this.failed(index);
               case '[': return this.failed(index);
+              case '{': return <br />
               default: return this.normalWord(index);
             }
           })}
