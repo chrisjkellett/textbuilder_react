@@ -10,5 +10,5 @@ npm test //runs tests
 ```
 
 # structure
-/client is a React app built from create-react-app with no additional dependencies
-/builder contains all logic written in pure javascript utilising es6
+* /client is a React app built from create-react-app with no additional dependencies
+* /builder contains all logic written in pure javascript utilising es6
